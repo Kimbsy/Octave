@@ -8,6 +8,7 @@ m = length(y); % number of training examples
 J_history = zeros(num_iters, 1);
 
 for iter = 1:num_iters
+% for iter = 1
 
     % ====================== YOUR CODE HERE ======================
     % Instructions: Perform a single gradient step on the parameter vector
@@ -18,32 +19,43 @@ for iter = 1:num_iters
     %
 
 
-    newTheta = theta;
+    % Properly vectorized VVV
 
-    % for each theta get the new value and store it in newTheta
-    for ind = 1:length(theta)
-        theta_j = theta(ind);
+    predictions = X * theta;
 
-        total = 0;
+    delta = (1 / m) * (X' * (predictions - y));
 
-        % sum all training examnples
-        for k = 1:m
+    theta = theta - (alpha * delta);
 
-            xValue = X(k, ind);
-            yValue = y(k);
 
-            hOfx = X(k, :) * theta;
+    % First attempt VVV
 
-            total = total + ((hOfx - yValue) * xValue);
+    % newTheta = theta;
 
-        endfor
+    % % for each theta get the new value and store it in newTheta
+    % for ind = 1:length(theta)
+    %     theta_j = theta(ind);
 
-        newTheta(ind) = theta_j - (alpha * (1 / m) * total);
+    %     total = 0;
 
-    endfor
+    %     % sum all training examnples
+    %     for k = 1:m
 
-    % update theta
-    theta = newTheta;
+    %         xValue = X(k, ind);
+    %         yValue = y(k);
+
+    %         hOfx = X(k, :) * theta;
+
+    %         total = total + ((hOfx - yValue) * xValue);
+
+    %     end
+
+    %     newTheta(ind) = theta_j - (alpha * (1 / m) * total);
+
+    % end
+
+    % % update theta
+    % theta = newTheta;
 
 
     % ============================================================

@@ -17,21 +17,32 @@ J = 0;
 % calculate h(x) from given linear hypothesis function
 
 
-total = 0;
+% Properly vectorized VVV
 
-for ind = 1:m
+predictions = X * theta;
 
-  hOfx = X(ind, :) * theta;
+squareErrors = (predictions - y) .^ 2;
 
-  yValue = y(ind);
+J = 1 / (2 * m) * sum(squareErrors);
 
-  toSum = (hOfx - yValue) ^ 2;
 
-  total = total + toSum;
+% First attempt VVV
 
-endfor
+% total = 0;
 
-J = (1 / (2 * m)) * total;
+% for ind = 1:m
+
+%   hOfx = X(ind, :) * theta;
+
+%   yValue = y(ind);
+
+%   toSum = (hOfx - yValue) ^ 2;
+
+%   total = total + toSum;
+
+% end
+
+% J = (1 / (2 * m)) * total;
 
 
 % =========================================================================
