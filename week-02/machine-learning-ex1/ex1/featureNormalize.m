@@ -28,9 +28,21 @@ sigma = zeros(1, size(X, 2));
 
 
 
+% for each feature
+for index = 1:size(X, 2)
+  % get the feture
+  featureVector = X(:,index);
 
+  % find the mean
+  mu(index) = mean(featureVector);
 
+  % find the standard deviation
+  sigma(index) = std(featureVector);
 
+  % normalize the feature
+  featureVector = (featureVector - mu(index)) / sigma(index);
+  X_norm(:,index) = featureVector;
+end
 
 
 

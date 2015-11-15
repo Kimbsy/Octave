@@ -15,6 +15,12 @@ J = 0;
 
 
 
+  predictions = X * theta;
+
+  squareErrors = (predictions - y) .^ 2;
+
+  J = 1 / (2 * m) * sum(squareErrors);
+
 
 
 % =========================================================================
