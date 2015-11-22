@@ -22,7 +22,25 @@ grad = zeros(size(theta));
 
 
 
+% cost
 
+% get predictions matrix
+predictions = X * theta;
+
+% calculate logistic function based on value of y
+logistic = ((-y) .* log(sigmoid(predictions))) - ((1 - y) .* (log(1 - sigmoid(predictions))));
+
+% sum
+J = 1 / m * sum(logistic);
+
+
+% gradient
+
+% calculate partial derivative of cost function
+partial = (sigmoid(predictions) - y);
+
+% get gradient
+grad = 1 / m * (partial' * X);
 
 
 

@@ -14,8 +14,15 @@ figure; hold on;
 
 
 
+% Find indices of positive nd negative examples.
+pos = find(y == 1);
+neg = find(y == 0);
 
+% Plot positives as +'s.
+plot(X(pos, 1), X(pos, 2), 'k+', 'LineWidth', 2, 'MarkerSize', 7);
 
+% Ploy negatives as o's.
+plot(X(neg, 1), X(neg, 2), 'ko', 'LineWidth', 2, 'MarkerSize', 7);
 
 
 

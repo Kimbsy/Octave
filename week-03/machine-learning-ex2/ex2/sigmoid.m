@@ -10,7 +10,8 @@ g = zeros(size(z));
 %               vector or scalar).
 
 
-
+% arrayfun calls the function @(x) on each element of the array z.
+g = arrayfun(@(x) 1 / (1 + (exp(-x))), z);
 
 
 % =============================================================
